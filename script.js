@@ -2242,3 +2242,76 @@ function translateStaticText() {
 
 window.setLanguage = setLanguage;
 window.addEventListener('DOMContentLoaded', translateStaticText);
+
+// Interactive Title Animation Function
+function showTitleAnimation() {
+    const titleElement = document.querySelector('.app-title');
+    const subtitleElement = document.querySelector('.app-subtitle');
+    
+    if (titleElement) {
+        // Add celebration animation
+        titleElement.classList.add('title-celebrate');
+        
+        // Create floating particles effect
+        createFloatingParticles();
+        
+        // Show a fun message
+        if (subtitleElement) {
+            const originalText = subtitleElement.textContent;
+            subtitleElement.textContent = '🎉 आपका स्वागत है! Welcome! 🎉';
+            
+            // Reset after animation
+            setTimeout(() => {
+                subtitleElement.textContent = originalText;
+                titleElement.classList.remove('title-celebrate');
+            }, 3000);
+        }
+        
+        // Play a subtle sound effect (visual feedback only)
+        showToast('🌱 कृषि Sahayak में आपका स्वागत है!', 'success', 2000);
+    }
+}
+
+// Create floating particles for celebration effect
+function createFloatingParticles() {
+    const titleElement = document.querySelector('.app-title');
+    if (!titleElement) return;
+    
+    const particles = ['🌾', '🚜', '🌱', '🌽', '🥕', '🍅', '☀️', '🌧️'];
+    const colors = ['#10b981', '#34d399', '#059669', '#6ee7b7'];
+    
+    for (let i = 0; i < 8; i++) {
+        setTimeout(() => {
+            const particle = document.createElement('div');
+            const emoji = particles[Math.floor(Math.random() * particles.length)];
+            
+            particle.textContent = emoji;
+            particle.style.cssText = `
+                position: absolute;
+                pointer-events: none;
+                z-index: 1000;
+                font-size: ${Math.random() * 10 + 15}px;
+                left: ${titleElement.offsetLeft + Math.random() * titleElement.offsetWidth}px;
+                top: ${titleElement.offsetTop}px;
+                opacity: 1;
+                transition: all 2s ease-out;
+            `;
+            
+            document.body.appendChild(particle);
+            
+            // Animate particle
+            setTimeout(() => {
+                particle.style.transform = `translateY(-${Math.random() * 100 + 50}px) rotate(${Math.random() * 360}deg)`;
+                particle.style.opacity = '0';
+            }, 50);
+            
+            // Remove particle
+            setTimeout(() => {
+                particle.remove();
+            }, 2000);
+        }, i * 100);
+    }
+}
+
+// Make function globally available
+window.showTitleAnimation = showTitleAnimation;
