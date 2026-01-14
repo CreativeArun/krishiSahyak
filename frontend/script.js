@@ -741,8 +741,8 @@
             
             // Demo users
             const demoUsers = [
-                { email: 'farmer@example.com', password: 'demo123', name: 'Mr. Sharma' },
-                { email: 'officer@example.com', password: 'demo123', name: 'Agri Officer' }
+                { email: 'riya@gmail.com', password: 'demo123', name: 'Miss. Riya Singh' },
+                { email: 'officer@gmail.com', password: 'demo123', name: 'Agri Officer' }
             ];
 
             const hideLoginModal = () => loginModal.classList.add('hidden');
@@ -2589,4 +2589,5 @@ window.addEventListener('load', () => {
             }
         });
     }
+
 });
