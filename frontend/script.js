@@ -2459,7 +2459,7 @@ async function sendChatMessage() {
     
     try {
         // Call backend /chat endpoint
-        const response = await fetch(`${API_BASE_URL}/advisory`, {
+        const response = await fetch(`${API_BASE_URL}/chat`, {
 
             method: 'POST',
             headers: {
@@ -2598,4 +2598,5 @@ window.addEventListener('load', () => {
     }
 
 });
+
 
