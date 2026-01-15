@@ -8,6 +8,11 @@
         let currentDistrict = 'Hisar';
         let lastWeatherData = null;
         let updateIntervals = {};
+        const API_BASE_URL = 
+  window.location.hostname === 'localhost'
+    ? 'http://localhost:3001'
+    : 'https://krishisahyak-1.onrender.com';
+
         let isDataFresh = {
             weather: false,
             soil: false,
@@ -2345,7 +2350,8 @@ async function generateAdvisory() {
         resultsEl.classList.add('hidden');
         
         // Call backend /advisory endpoint
-        const response = await fetch('http://localhost:3001/advisory', {
+        const response = await fetch(`${API_BASE_URL}/advisory`, {
+
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -2453,7 +2459,8 @@ async function sendChatMessage() {
     
     try {
         // Call backend /chat endpoint
-        const response = await fetch('http://localhost:3001/chat', {
+        const response = await fetch(`${API_BASE_URL}/advisory`, {
+
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -2591,3 +2598,4 @@ window.addEventListener('load', () => {
     }
 
 });
+
